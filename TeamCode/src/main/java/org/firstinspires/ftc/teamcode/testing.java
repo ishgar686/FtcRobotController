@@ -19,75 +19,37 @@ public class testing extends IntakeClass {
             while(opModeIsActive()) {
                 while(true) {
 
-                    boolean armtrue = true;
-                    boolean clamptrue = true;
-
                     // left bumper - to close claw (front servo)
-                    if(gamepad1.a){
-                        shooter.setPower(1);
-                        while(gamepad1.a){
-                            shooter.setPower(1);
-                        }
-                    }
-                    else {
-                        shooter.setPower(0);
-                    }
 
-                    if(gamepad1.b){
-                        intake.setPower(1);
-                        while(gamepad1.b){
-                            intake.setPower(1);
-                        }
+
+                    if(gamepad1.a){
+                        intaketrue = !intaketrue;
                     }
-                    else {
+                    if(intaketrue){
+                        intake.setPower(1);
+                    }
+                    else if(!intaketrue){
                         intake.setPower(0);
                     }
 
+                    if(gamepad1.b){
+                        shootertrue = !shootertrue;
+                    }
+                    if(shootertrue){
+                        shooter.setPower(1);
+                    }
+                    if(!shootertrue){
+                        shooter.setPower(0);
+                    }
+
                     if(gamepad1.x){
+                        hoppertrue = !hoppertrue;
+                    }
+                    if(hoppertrue){
                         hopper.setPower(1);
-                        while(gamepad1.x){
-                            hopper.setPower(1);
-                        }
-
                     }
-                    else {
+                    else if(!hoppertrue){
                         hopper.setPower(0);
-                    }
-
-
-                    //servos
-
-                    if(armtrue) {
-                        if (gamepad1.right_bumper) {
-                            arm.setPosition(1);
-                            sleep(200);
-                            armtrue = false;
-                        }
-                    }
-
-                    if(!armtrue) {
-                        if(gamepad1.right_bumper){
-                            arm.setPosition(0);
-                            sleep(200);
-                            armtrue = true;
-                        }
-                    }
-
-
-                    if(clamptrue) {
-                        if (gamepad1.left_bumper) {
-                            clamp.setPosition(1);
-                            sleep(200);
-                            clamptrue = false;
-                        }
-                    }
-
-                    if(!clamptrue) {
-                        if(gamepad1.left_bumper){
-                            clamp.setPosition(0);
-                            sleep(200);
-                            clamptrue = true;
-                        }
                     }
 
                     telemetry.addData("Status", "Run Time: " + runtime.toString());

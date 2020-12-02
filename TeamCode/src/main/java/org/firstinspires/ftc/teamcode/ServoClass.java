@@ -2,27 +2,18 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 
 /**
  This is an abstract class that handles 4 drive train motors.
  */
-abstract class IntakeClass extends LinearOpMode
+abstract class ServoClass extends LinearOpMode
 {
-
-    protected DcMotor intake;
-    protected DcMotor shooter;
-    protected DcMotor hopper;
-
-
-
     protected Servo arm;
     protected Servo clamp;
 
-    boolean hoppertrue = true;
-    boolean shootertrue = true;
-    boolean intaketrue = true;
+    double arm_position = 0;
+    double clamp_position = 0;
 
     public void runOpMode() {
         setupDriveMotors();
@@ -36,9 +27,7 @@ abstract class IntakeClass extends LinearOpMode
         // Initialize the hardware variables. Note that the strings used here as parameters
 
         updateTelemetryMessage("Initializing Motors");
-        intake = hardwareMap.get(DcMotor.class, "intake");
-        shooter = hardwareMap.get(DcMotor.class, "shooter");
-        hopper = hardwareMap.get(DcMotor.class, "hopper");
+
 
         //Servos
         arm = hardwareMap.get(Servo.class, "arm");
@@ -47,10 +36,6 @@ abstract class IntakeClass extends LinearOpMode
 
         // Most robots need the motor on one side to be reve`rsed to drive goBackward
         // Reverse the motor that runs backwards when connected directly to the battery
-
-        intake.setDirection(DcMotor.Direction.FORWARD);
-        shooter.setDirection(DcMotor.Direction.FORWARD);
-        hopper.setDirection(DcMotor.Direction.REVERSE);
 
         /*    */
 
@@ -65,25 +50,6 @@ arm.setDirection(DcMotor.Direction.FORWARD);qa
  */
     }
 
-    public void stop(final String message) {
-        intake.setPower(0.0);
-
-
-        updateTelemetryMessage(message);
-    }
-
-    public void stopWithSleep(final String message, final long duration) {
-        stop(message);
-        sleep(duration);
-    }
-
-    public void stopWithSleep(final long duration) {
-        stop("Stopping");
-        sleep(duration);
-    }
-
-
-
     protected void updateTelemetryMessage(String message) {
         updateTelemetryMessage("Status", message);
     }
@@ -91,23 +57,6 @@ arm.setDirection(DcMotor.Direction.FORWARD);qa
     protected void updateTelemetryMessage(String caption, String message) {
         telemetry.addData("Status", message);
         telemetry.update();
-    }
-
-
-
-    public void intake(final double intakepower, final int duration){
-        intake.setPower(intakepower);
-        sleep(duration);
-    }
-
-    public void shooter(final double intakepower, final int duration){
-        shooter.setPower(intakepower);
-        sleep(duration);
-    }
-
-    public void hopper(final double intakepower, final int duration){
-        hopper.setPower(intakepower);
-        sleep(duration);
     }
 
     public void armdown() {
