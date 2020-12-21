@@ -19,38 +19,18 @@ public class testing extends IntakeClass {
             while(opModeIsActive()) {
                 while(true) {
 
-                    // left bumper - to close claw (front servo)
-
-
-                    if(gamepad1.a){
-                        intaketrue = !intaketrue;
-                    }
-                    if(intaketrue){
+                    if (gamepad1.a) {
                         intake.setPower(1);
                     }
-                    else if(!intaketrue){
+
+                    if (gamepad1.b) {
                         intake.setPower(0);
                     }
 
-                    if(gamepad1.b){
-                        shootertrue = !shootertrue;
-                    }
-                    if(shootertrue){
-                        shooter.setPower(1);
-                    }
-                    if(!shootertrue){
-                        shooter.setPower(0);
-                    }
+                    // left bumper - to close claw (front servo)
 
-                    if(gamepad1.x){
-                        hoppertrue = !hoppertrue;
-                    }
-                    if(hoppertrue){
-                        hopper.setPower(1);
-                    }
-                    else if(!hoppertrue){
-                        hopper.setPower(0);
-                    }
+
+
 
                     telemetry.addData("Status", "Run Time: " + runtime.toString());
                     telemetry.update();

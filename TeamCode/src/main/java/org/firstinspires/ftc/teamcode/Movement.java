@@ -14,12 +14,7 @@ abstract class Movement extends LinearOpMode
     protected DcMotor rightFront;
     protected DcMotor leftBack;
     protected DcMotor rightBack;
-    protected DcMotor shooter;
-    protected DcMotor hopper;
     protected DcMotor intake;
-
-    protected Servo arm;
-    protected Servo clamp;
 
     public void runOpMode() {
         setupDriveMotors();
@@ -37,8 +32,6 @@ abstract class Movement extends LinearOpMode
         rightFront = hardwareMap.get(DcMotor.class, "rightFront");
         rightBack = hardwareMap.get(DcMotor.class, "rightBack");
         leftBack = hardwareMap.get(DcMotor.class, "leftBack");
-        shooter = hardwareMap.get(DcMotor.class, "shooter");
-        hopper = hardwareMap.get(DcMotor.class, "hopper");
         intake = hardwareMap.get(DcMotor.class, "intake");
 
         // Most robots need the motor on one side to be reve`rsed to drive goBackward
@@ -47,12 +40,9 @@ abstract class Movement extends LinearOpMode
         rightFront.setDirection(DcMotor.Direction.REVERSE);
         leftBack.setDirection(DcMotor.Direction.FORWARD);
         rightBack.setDirection(DcMotor.Direction.REVERSE);
-        shooter.setDirection(DcMotor.Direction.FORWARD);
-        hopper.setDirection(DcMotor.Direction.FORWARD);
         intake.setDirection(DcMotor.Direction.FORWARD);
 
-        arm = hardwareMap.servo.get("arm");
-        clamp =  hardwareMap.servo.get("clamp");
+
     /*    */
 
         updateTelemetryMessage("Initialized Motors");
@@ -103,7 +93,6 @@ abstract class Movement extends LinearOpMode
     public void strafeRight(final double power, final int duration) {
         //TODO - clarify how these motor powers are distributed for strafeRight movement
         leftFront.setPower(-power);
-        rightFront.setPower(power);
         rightBack.setPower(-power);
         leftBack.setPower(power);
         sleep(duration);
@@ -149,35 +138,12 @@ abstract class Movement extends LinearOpMode
 
         updateTelemetryMessage("Turning Left");
     }
-   public void shooter(final double shooterpower, final int duration) {
-        shooter.setPower(shooterpower);
-        sleep(duration);
-    }
 
     public void intake(final double intakepower, final int duration){
         intake.setPower(intakepower);
         sleep(duration);
     }
 
-    public void armdown() {
-        arm.setPosition(1);
-        sleep(200);
-    }
-
-    public void armup() {
-        arm.setPosition(0);
-        sleep(200);
-    }
-
-    public void clampdown() {
-        clamp.setPosition(1);
-        sleep(200);
-    }
-
-    public void clampup() {
-        clamp.setPosition(0);
-        sleep(200);
-    }
 /*
     public void armUp(final double armpower, final int duration) {
         arm.setPower(armpower);

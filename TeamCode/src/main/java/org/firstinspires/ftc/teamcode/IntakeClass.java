@@ -12,17 +12,6 @@ abstract class IntakeClass extends LinearOpMode
 {
 
     protected DcMotor intake;
-    protected DcMotor shooter;
-    protected DcMotor hopper;
-
-
-
-    protected Servo arm;
-    protected Servo clamp;
-
-    boolean hoppertrue = true;
-    boolean shootertrue = true;
-    boolean intaketrue = true;
 
     public void runOpMode() {
         setupDriveMotors();
@@ -37,20 +26,13 @@ abstract class IntakeClass extends LinearOpMode
 
         updateTelemetryMessage("Initializing Motors");
         intake = hardwareMap.get(DcMotor.class, "intake");
-        shooter = hardwareMap.get(DcMotor.class, "shooter");
-        hopper = hardwareMap.get(DcMotor.class, "hopper");
-
-        //Servos
-        arm = hardwareMap.get(Servo.class, "arm");
-        clamp = hardwareMap.get(Servo.class, "clamp");
 
 
         // Most robots need the motor on one side to be reve`rsed to drive goBackward
         // Reverse the motor that runs backwards when connected directly to the battery
 
         intake.setDirection(DcMotor.Direction.FORWARD);
-        shooter.setDirection(DcMotor.Direction.FORWARD);
-        hopper.setDirection(DcMotor.Direction.REVERSE);
+
 
         /*    */
 
@@ -100,35 +82,7 @@ arm.setDirection(DcMotor.Direction.FORWARD);qa
         sleep(duration);
     }
 
-    public void shooter(final double intakepower, final int duration){
-        shooter.setPower(intakepower);
-        sleep(duration);
-    }
 
-    public void hopper(final double intakepower, final int duration){
-        hopper.setPower(intakepower);
-        sleep(duration);
-    }
-
-    public void armdown() {
-        arm.setPosition(1);
-        sleep(200);
-    }
-
-    public void armup() {
-        arm.setPosition(0);
-        sleep(200);
-    }
-    
-    public void clampdown() {
-        clamp.setPosition(1);
-        sleep(200);
-    }
-
-    public void clampup() {
-        clamp.setPosition(0);
-        sleep(200);
-    }
 
 /*
     public void armUp(final double armpower, final int duration) {

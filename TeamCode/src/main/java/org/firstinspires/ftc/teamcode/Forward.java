@@ -15,7 +15,8 @@ public class Forward extends Movement {
         waitForStart();
         runtime.reset();
 
-        strafeRight(1, 20);
+        sleep(50);
+
         goForward(1,  20);
         /*sense*/
         goForward(1, 20);

@@ -21,6 +21,24 @@ public class DriverControl extends Movement {
             while(true) {
                 // Gamepad 1 controls:
 
+                if (gamepad2.a)
+                    while (gamepad2.a) {
+                        intake.setPower(1);
+                    }
+                else{
+                    intake.setPower(0);
+                }
+
+                if (gamepad2.x) {
+                    intake.setPower(1);
+                }
+
+                if (gamepad2.y) {
+                    intake.setPower(0);
+                }
+
+
+
                 // Left trigger - to move left sideways
                 strafeRight(-gamepad1.right_trigger, 0);
 
@@ -46,38 +64,6 @@ public class DriverControl extends Movement {
 
                 // left bumper - to close claw (front servo)
 
-                if(gamepad2.a){
-                    intake.setPower(1);
-                }
-
-                if (gamepad2.dpad_up) {
-
-                    arm.setPosition(1);
-                    sleep(100);
-                    telemetry.addData("front servo open", "clawposition: 0.4" );
-                }
-
-                // right bumper - to open claw (front servo)
-                if (gamepad2.dpad_down) {
-
-                    arm.setPosition(0.0);
-                    sleep(100);
-                    telemetry.addData("front servo closed", "clawposition: 0.1" );
-                }
-
-                if (gamepad2.dpad_left) {
-
-                    clamp.setPosition(1);
-                    sleep(100);
-                    telemetry.addData("front servo closed", "clawposition: 0.1" );
-                }
-
-                if (gamepad2.dpad_right) {
-
-                    clamp.setPosition(0.0);
-                    sleep(100);
-                    telemetry.addData("front servo closed", "clawposition: 0.1" );
-                }
 /*
                 // Gamepad 2 Controls
 
