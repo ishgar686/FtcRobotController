@@ -29,14 +29,21 @@ public class DriverControl extends Movement {
                     intake.setPower(0);
                 }
 
-                if (gamepad2.x) {
-                    intake.setPower(1);
+                if (gamepad2.b)
+                    while (gamepad2.b) {
+                        outtake.setPower(1);
+                    }
+                else{
+                    outtake.setPower(0);
                 }
 
-                if (gamepad2.y) {
-                    intake.setPower(0);
+                if (gamepad2.y)
+                    while (gamepad2.y) {
+                        hopper.setPower(1);
+                    }
+                else{
+                    hopper.setPower(0);
                 }
-
 
 
                 // Left trigger - to move left sideways
