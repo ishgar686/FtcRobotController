@@ -13,6 +13,7 @@ abstract class IntakeClass extends LinearOpMode
 
     protected DcMotor intake;
     protected DcMotor hopper;
+    protected DcMotor outtake;
 
     public void runOpMode() {
         setupDriveMotors();
@@ -28,6 +29,7 @@ abstract class IntakeClass extends LinearOpMode
         updateTelemetryMessage("Initializing Motors");
         intake = hardwareMap.get(DcMotor.class, "intake");
         hopper = hardwareMap.get(DcMotor.class, "hopper");
+        outtake = hardwareMap.get(DcMotor.class, "outtake");
 
 
         // Most robots need the motor on one side to be reve`rsed to drive goBackward
