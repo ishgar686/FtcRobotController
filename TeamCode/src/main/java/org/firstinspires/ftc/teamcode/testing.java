@@ -27,6 +27,13 @@ public class testing extends IntakeClass {
                         intake.setPower(0);
                     }
 
+                    if (gamepad1.x) {
+                        hopper.setPower(1);
+                    }
+
+                    if (gamepad1.y) {
+                        hopper.setPower(0);
+                    }
                     // left bumper - to close claw (front servo)
 
 
