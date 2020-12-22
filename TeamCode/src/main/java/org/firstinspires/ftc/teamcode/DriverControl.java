@@ -16,19 +16,24 @@ public class DriverControl extends Movement {
         waitForStart();
         runtime.reset();
 
-
         while(opModeIsActive()) {
             while(true) {
-                // Gamepad 1 controls:
+                // Gamepad 2 controls:
 
-                if (gamepad2.a)
-                    while (gamepad2.a) {
-                        intake.setPower(1);
-                    }
-                else{
+                if (gamepad2.a) {
+                    intake.setPower(1);
+                }
+
+                if (gamepad2.b) {
                     intake.setPower(0);
                 }
 
+
+                if (gamepad2.x) {
+                    hopper.setPower(0.75);
+                }
+
+             
                 if (gamepad2.b)
                     while (gamepad2.b) {
                         outtake.setPower(1);
@@ -42,6 +47,7 @@ public class DriverControl extends Movement {
                         hopper.setPower(1);
                     }
                 else{
+
                     hopper.setPower(0);
                 }
 
