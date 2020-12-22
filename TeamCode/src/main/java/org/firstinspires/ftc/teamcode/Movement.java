@@ -15,6 +15,9 @@ abstract class Movement extends LinearOpMode
     protected DcMotor leftBack;
     protected DcMotor rightBack;
     protected DcMotor intake;
+
+    protected DcMotor outtake;
+  
     protected DcMotor hopper;
 
     public void runOpMode() {
@@ -34,7 +37,13 @@ abstract class Movement extends LinearOpMode
         rightBack = hardwareMap.get(DcMotor.class, "rightBack");
         leftBack = hardwareMap.get(DcMotor.class, "leftBack");
         intake = hardwareMap.get(DcMotor.class, "intake");
+
         hopper = hardwareMap.get(DcMotor.class, "hopper");
+
+        outtake = hardwareMap.get(DcMotor.class, "outtake");
+        hopper = hardwareMap.get(DcMotor.class, "hopper");
+
+
 
         // Most robots need the motor on one side to be reve`rsed to drive goBackward
         // Reverse the motor that runs backwards when connected directly to the battery
@@ -43,6 +52,9 @@ abstract class Movement extends LinearOpMode
         leftBack.setDirection(DcMotor.Direction.FORWARD);
         rightBack.setDirection(DcMotor.Direction.REVERSE);
         intake.setDirection(DcMotor.Direction.FORWARD);
+        hopper.setDirection(DcMotor.Direction.FORWARD);
+        outtake.setDirection(DcMotor.Direction.FORWARD);
+
 
 
     /*    */
