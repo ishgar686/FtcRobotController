@@ -19,19 +19,19 @@ public class testing extends IntakeClass {
             while(opModeIsActive()) {
                 while(true) {
 
-                    if (gamepad1.a) {
+                    if (gamepad2.a) {
                         intake.setPower(1);
                     }
 
-                    if (gamepad1.b) {
+                    if (gamepad2.b) {
                         intake.setPower(0);
                     }
 
-                    if (gamepad1.x) {
+                    if (gamepad2.x) {
                         hopper.setPower(1);
                     }
 
-                    if (gamepad1.y) {
+                    if (gamepad2.y) {
                         hopper.setPower(0);
                     }
                     // left bumper - to close claw (front servo)
