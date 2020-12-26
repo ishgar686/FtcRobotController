@@ -15,10 +15,8 @@ public class servotesting extends ServoClass {
             runtime.reset();
 
 
-            while(opModeIsActive()) {
+/*            while(opModeIsActive()) {
                 while(true) {
-
-                    //servos
 
                     if(gamepad1.a) {
                         arm.setPosition(0.4);
@@ -60,7 +58,7 @@ public class servotesting extends ServoClass {
                         sleep(200);
                     }
 
-
+*/
                     telemetry.addData("Status", "Run Time: " + runtime.toString());
                     telemetry.update();
                 }
