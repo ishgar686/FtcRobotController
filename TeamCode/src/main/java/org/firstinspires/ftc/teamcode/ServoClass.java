@@ -9,11 +9,8 @@ import com.qualcomm.robotcore.hardware.Servo;
  */
 abstract class ServoClass extends LinearOpMode
 {
-    protected Servo arm;
-    protected Servo clamp;
-
-    double arm_position = 0;
-    double clamp_position = 0;
+    protected Servo claw1;
+    protected Servo claw2;
 
     public void runOpMode() {
         setupDriveMotors();
@@ -30,8 +27,8 @@ abstract class ServoClass extends LinearOpMode
 
 
         //Servos
-        arm = hardwareMap.get(Servo.class, "arm");
-        clamp = hardwareMap.get(Servo.class, "clamp");
+        claw1 = hardwareMap.get(Servo.class, "claw1");
+        claw2 = hardwareMap.get(Servo.class, "claw2");
 
 
         // Most robots need the motor on one side to be reve`rsed to drive goBackward
@@ -59,7 +56,17 @@ arm.setDirection(DcMotor.Direction.FORWARD);qa
         telemetry.update();
     }
 
-    public void armdown() {
+    public void claw1(final double claw1position, final int duration) {
+        claw1.setPosition(claw1position);
+        sleep(duration);
+    }
+
+    public void claw2(final double claw2position, final int duration) {
+        claw1.setPosition(claw2position);
+        sleep(duration);
+    }
+
+/*    public void armdown() {
         arm.setPosition(1);
         sleep(200);
     }
@@ -68,7 +75,7 @@ arm.setDirection(DcMotor.Direction.FORWARD);qa
         arm.setPosition(0);
         sleep(200);
     }
-    
+
     public void clampdown() {
         clamp.setPosition(1);
         sleep(200);
@@ -78,7 +85,7 @@ arm.setDirection(DcMotor.Direction.FORWARD);qa
         clamp.setPosition(0);
         sleep(200);
     }
-
+*/
 /*
     public void armUp(final double armpower, final int duration) {
         arm.setPower(armpower);

@@ -15,10 +15,10 @@ abstract class Movement extends LinearOpMode
     protected DcMotor leftBack;
     protected DcMotor rightBack;
     protected DcMotor intake;
-
     protected DcMotor outtake;
-  
     protected DcMotor hopper;
+    protected Servo claw1;
+    protected Servo claw2;
 
     public void runOpMode() {
         setupDriveMotors();
@@ -37,11 +37,10 @@ abstract class Movement extends LinearOpMode
         rightBack = hardwareMap.get(DcMotor.class, "rightBack");
         leftBack = hardwareMap.get(DcMotor.class, "leftBack");
         intake = hardwareMap.get(DcMotor.class, "intake");
-
-        hopper = hardwareMap.get(DcMotor.class, "hopper");
-
         outtake = hardwareMap.get(DcMotor.class, "outtake");
         hopper = hardwareMap.get(DcMotor.class, "hopper");
+        claw1 = hardwareMap.get(DcMotor.class, "claw1");
+        claw2 = hardwareMap.get(DcMotor.class, "claw2");
 
 
 
@@ -160,6 +159,16 @@ abstract class Movement extends LinearOpMode
 
     public void hopper(final double hopperpower, final int duration){
         hopper.setPower(hopperpower);
+        sleep(duration);
+    }
+
+    public void claw1(final double claw1position, final int duration){
+        claw1.setPosition(claw1position);
+        sleep(duration);
+    }
+
+    public void claw2(final double claw2position, final int duration){
+        claw2.setPosition(claw2position);
         sleep(duration);
     }
 
